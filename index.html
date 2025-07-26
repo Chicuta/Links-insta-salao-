@@ -3,7 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T&LBeauty - Links</title>
+    <title>T&LBeauty - Links Oficiais | Centro de Beleza em Criciúma</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="T&LBeauty - Centro de beleza em Criciúma. Acesse nossos links oficiais, agende seu horário e siga-nos nas redes sociais.">
+    <meta name="keywords" content="salão de beleza, criciúma, beleza, estética, cabeleireiro, maquiagem">
+    <meta name="author" content="T&LBeauty">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="T&LBeauty - Centro de Beleza">
+    <meta property="og:description" content="Centro de beleza em Criciúma. Acesse nossos links oficiais.">
+    <meta property="og:image" content="https://i.imgur.com/bI49SOf.png">
+    <meta property="og:url" content="https://tlbeauty.com">
+    <meta property="og:type" content="website">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#d4a574">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="T&LBeauty">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/bI49SOf.png">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/bI49SOf.png">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,10 +38,24 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #d4a574 0%, #c8956b 50%, #b8855e 100%);
+            background: linear-gradient(135deg, #e6c08a 0%, #d4a574 25%, #c8956b 50%, #b8855e 75%, #a67651 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             color: white;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="g"><stop offset="20%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="50%" stop-color="%23ffffff" stop-opacity="0.05"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="100" fill="url(%23g)"/></svg>') repeat;
+            pointer-events: none;
+            z-index: -1;
         }
 
         .container {
@@ -49,6 +88,19 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            animation: profilePulse 3s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes profilePulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            }
         }
 
         .title {
@@ -76,7 +128,10 @@
             font-size: 16px;
             font-weight: 500;
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             text-align: center;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
@@ -84,6 +139,16 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-button i {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-button:hover i {
+            transform: scale(1.2);
         }
 
         .link-button::before {
@@ -225,6 +290,110 @@
             }
         }
 
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 300px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast i {
+            color: #4CAF50;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Share Button */
+        .share-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Click Counter */
+        .click-counter {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .click-counter.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         /* Responsivo */
         @media (max-width: 480px) {
             .container {
@@ -252,10 +421,26 @@
         </div>
 
         <div class="links-container">
-            <a href="#" class="link-button" data-link="site">Nosso site</a>
-            <a href="#" class="link-button" data-link="fale-conosco">Fale conosco</a>
-            <a href="#" class="link-button" data-link="instagram-laura">@laura_osoriobeauty</a>
-            <a href="#" class="link-button" data-link="instagram-tl">@tl_beautycenter</a>
+            <a href="#" class="link-button" data-link="site">
+                <i class="fas fa-globe"></i>
+                Nosso site
+                <span class="click-counter" data-count="0">0</span>
+            </a>
+            <a href="#" class="link-button" data-link="fale-conosco">
+                <i class="fab fa-whatsapp"></i>
+                Fale conosco
+                <span class="click-counter" data-count="0">0</span>
+            </a>
+            <a href="#" class="link-button" data-link="instagram-laura">
+                <i class="fab fa-instagram"></i>
+                @laura_osoriobeauty
+                <span class="click-counter" data-count="0">0</span>
+            </a>
+            <a href="#" class="link-button" data-link="instagram-tl">
+                <i class="fab fa-instagram"></i>
+                @tl_beautycenter
+                <span class="click-counter" data-count="0">0</span>
+            </a>
             
             <div class="map-container">
                 <div class="map-placeholder">
@@ -270,9 +455,24 @@
                 <div style="clear: both;"></div>
             </div>
             
-            <a href="#" class="link-button" data-link="localizacao">Localização</a>
+            <a href="#" class="link-button" data-link="localizacao">
+                <i class="fas fa-map-marker-alt"></i>
+                Localização
+                <span class="click-counter" data-count="0">0</span>
+            </a>
         </div>
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Link aberto!</span>
+    </div>
+
+    <!-- Share Button -->
+    <button class="share-btn" id="shareBtn" title="Compartilhar página">
+        <i class="fas fa-share-alt"></i>
+    </button>
 
     <script>
         // Configuração dos links
@@ -284,6 +484,68 @@
             'localizacao': 'https://maps.app.goo.gl/iUua2eNyRYhC8svv5'
         };
 
+        // Contador de cliques
+        let clickCounts = JSON.parse(localStorage.getItem('tlbeauty-clicks')) || {};
+
+        // Função para mostrar toast
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const icon = toast.querySelector('i');
+            
+            toastMessage.textContent = message;
+            
+            if (type === 'success') {
+                icon.className = 'fas fa-check-circle';
+                icon.style.color = '#4CAF50';
+            } else if (type === 'error') {
+                icon.className = 'fas fa-exclamation-circle';
+                icon.style.color = '#f44336';
+            }
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Função para atualizar contador de cliques
+        function updateClickCounter(linkType) {
+            if (!clickCounts[linkType]) {
+                clickCounts[linkType] = 0;
+            }
+            clickCounts[linkType]++;
+            
+            const button = document.querySelector(`[data-link="${linkType}"]`);
+            const counter = button.querySelector('.click-counter');
+            
+            counter.textContent = clickCounts[linkType];
+            counter.setAttribute('data-count', clickCounts[linkType]);
+            
+            if (clickCounts[linkType] > 0) {
+                counter.classList.add('show');
+            }
+            
+            // Salvar no localStorage
+            localStorage.setItem('tlbeauty-clicks', JSON.stringify(clickCounts));
+        }
+
+        // Carregar contadores salvos
+        function loadClickCounters() {
+            Object.keys(clickCounts).forEach(linkType => {
+                const button = document.querySelector(`[data-link="${linkType}"]`);
+                if (button) {
+                    const counter = button.querySelector('.click-counter');
+                    counter.textContent = clickCounts[linkType];
+                    counter.setAttribute('data-count', clickCounts[linkType]);
+                    if (clickCounts[linkType] > 0) {
+                        counter.classList.add('show');
+                    }
+                }
+            });
+        }
+
         // Adicionar event listeners aos botões
         document.querySelectorAll('.link-button').forEach(button => {
             button.addEventListener('click', function(e) {
@@ -292,28 +554,72 @@
                 const url = links[linkType];
                 
                 if (url) {
-                    // Efeito de clique
+                    // Efeito de loading
+                    this.classList.add('loading');
                     this.style.transform = 'scale(0.95)';
+                    
                     setTimeout(() => {
+                        this.classList.remove('loading');
                         this.style.transform = '';
+                        
+                        // Atualizar contador
+                        updateClickCounter(linkType);
+                        
+                        // Mostrar toast
+                        showToast(`Abrindo ${this.textContent.trim()}...`);
+                        
+                        // Abrir link
                         window.open(url, '_blank');
-                    }, 150);
+                    }, 500);
                 } else {
-                    alert('Link em breve!');
+                    showToast('Link em breve!', 'error');
                 }
             });
         });
 
+        // Função para compartilhar página
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'T&LBeauty - Centro de Beleza',
+                    text: 'Confira os links oficiais da T&LBeauty!',
+                    url: window.location.href
+                }).then(() => {
+                    showToast('Obrigado por compartilhar!');
+                }).catch(() => {
+                    copyToClipboard();
+                });
+            } else {
+                copyToClipboard();
+            }
+        }
+
+        // Função para copiar link para clipboard
+        function copyToClipboard() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Link copiado para a área de transferência!');
+            }).catch(() => {
+                showToast('Erro ao copiar link', 'error');
+            });
+        }
+
+        // Event listener para botão de compartilhar
+        document.getElementById('shareBtn').addEventListener('click', sharePage);
+
         // Função para abrir direções
         function openDirections() {
             const url = "https://maps.app.goo.gl/iUua2eNyRYhC8svv5";
+            showToast('Abrindo direções...');
             window.open(url, '_blank');
         }
 
         // Criar partículas de fundo
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 20;
+            const particleCount = 15; // Reduzido para melhor performance
+            
+            // Limpar partículas existentes
+            particlesContainer.innerHTML = '';
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -328,9 +634,20 @@
             }
         }
 
-        // Inicializar partículas quando a página carregar
+        // Função para detectar se é dispositivo móvel
+        function isMobile() {
+            return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Inicializar quando a página carregar
         document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
+            // Carregar contadores
+            loadClickCounters();
+            
+            // Criar partículas (menos em dispositivos móveis)
+            if (!isMobile()) {
+                createParticles();
+            }
             
             // Adicionar efeito de hover suave
             document.querySelectorAll('.link-button').forEach(button => {
@@ -342,18 +659,25 @@
                     this.style.transition = 'all 0.3s ease';
                 });
             });
+
+            // Mostrar toast de boas-vindas
+            setTimeout(() => {
+                showToast('Bem-vindo à T&LBeauty! 💄✨');
+            }, 1000);
         });
 
-        // Efeito de scroll suave
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.container');
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
-        });
+        // Efeito de scroll suave (apenas em desktop)
+        if (!isMobile()) {
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.container');
+                const speed = scrolled * 0.2; // Reduzido para suavidade
+                parallax.style.transform = `translateY(${speed}px)`;
+            });
+        }
 
         // Adicionar efeito de touch feedback para dispositivos móveis
-        document.querySelectorAll('.link-button, .directions-btn').forEach(element => {
+        document.querySelectorAll('.link-button, .directions-btn, .share-btn').forEach(element => {
             element.addEventListener('touchstart', function() {
                 this.style.transform = 'scale(0.95)';
             });
@@ -363,6 +687,27 @@
                     this.style.transform = '';
                 }, 100);
             });
+        });
+
+        // Service Worker para PWA (básico)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(() => {
+                console.log('Service Worker não disponível');
+            });
+        }
+
+        // Analytics básico (contador de visitas)
+        let visits = parseInt(localStorage.getItem('tlbeauty-visits') || '0') + 1;
+        localStorage.setItem('tlbeauty-visits', visits.toString());
+
+        // Preload das imagens importantes
+        const preloadImages = [
+            'https://i.imgur.com/bI49SOf.png'
+        ];
+        
+        preloadImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
         });
     </script>
 </body>
